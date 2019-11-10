@@ -29,7 +29,7 @@ horovodrun -np 4 -H localhost:4 python run_glue_horovod.py \
     --data_dir $GLUE_DIR/$TASK_NAME \
     --max_seq_length MAX_SEQ_LENGTH \
     --per_gpu_eval_batch_size= $PER_GPU_EVAL_BATCH_SIZE \   
-    --per_gpu_train_batch_size=PER_GPU_TRAIN_BATCH_SIZE   \
+    --per_gpu_train_batch_size=$PER_GPU_TRAIN_BATCH_SIZE   \
     --learning_rate 2e-5 \
     --num_train_epochs 3.0 \
     --output_dir /tmp/$TASK_NAME/
