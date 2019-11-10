@@ -19,7 +19,7 @@ GLUE_DIR=/home/GLUE/GLUE/glue_data/
  
 #pssh -h $HOSTFILE -i -P "rm -rf $OUTPUT_DIR/*"
  
-horovodrun -np 4 -H localhost:4  horovodrun -np 4 -H localhost:4  python run_glue_horovod.py   --model_type bert   --model_name_or_path bert-base-cased   --task_name MRPC   --do_train   --do_eval   --do_lower_case   --data_dir ~/GLUE/GLUE/glue_data/MRPC   --max_seq_length 128   --per_gpu_train_batch_size 32   --learning_rate 2e-5   --num_train_epochs 3.0   --output_dir ~/output_dir/MPRC
+horovodrun -np 4 -H localhost:4  python run_glue_horovod.py   --model_type bert   --model_name_or_path ~/bert-checkpoint   --task_name MRPC   --do_train   --do_eval   --do_lower_case   --data_dir ~/GLUE/GLUE/glue_data/MRPC   --max_seq_length 128   --per_gpu_train_batch_size 32   --learning_rate 2e-5   --num_train_epochs 3.0   --output_dir ~/output_dir/MPRC
  
 kill -9 $(ps -eaf | grep vmstat | awk '{print $2}')
 min=$(cat /tmp/vmstatlog | sed '/memory/d' | sed '/free/d' | awk -v min=9999999999 '{if($4<min){min=$4}}END{print min} ')
