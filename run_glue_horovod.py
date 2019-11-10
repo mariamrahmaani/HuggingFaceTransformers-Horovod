@@ -427,7 +427,7 @@ def main():
     hvd.init()
     torch.manual_seed(args.seed)
     # added one line here:
-    torch.cuda.set_device(hvd.local_rank())
+    # torch.cuda.set_device(hvd.local_rank())
 
     if os.path.exists(args.output_dir) and os.listdir(args.output_dir) and args.do_train and not args.overwrite_output_dir:
         raise ValueError("Output directory ({}) already exists and is not empty. Use --overwrite_output_dir to overcome.".format(args.output_dir))
