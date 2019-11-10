@@ -19,7 +19,7 @@ GLUE_DIR=/home/GLUE/GLUE/glue_data/MRPC
  
 #pssh -h $HOSTFILE -i -P "rm -rf $OUTPUT_DIR/*"
  
-horovodrun -np 4 -H localhost:4 python run_glue_hvd.py \
+horovodrun -np 4 -H localhost:4 python run_glue_horovod.py \
     --model_type bert \
     --model_name_or_path bert-base-uncased \
     --task_name $TASK_NAME \
